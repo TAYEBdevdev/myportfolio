@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Section Titles */
+h2 {
+  text-align: center;
+  margin-top: 40px;
+  color: #007bff;
+}
+
+/* Modules Section */
+.module-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.module-card {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  width: 45%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.download-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #007bff;
+  color: white;
+  margin-top: 40px;
+  
+}
