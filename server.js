@@ -113,6 +113,7 @@ app.get("/downloadfile/:id", async (req, res) => {
             }
 
             const tempFilePath = path.join(__dirname, 'upload', fileName);
+            console.log(tempFilePath)
             await file.download({ destination: tempFilePath });
 
             // Send file for download
