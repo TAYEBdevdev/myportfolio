@@ -59,13 +59,15 @@ app.post('/uploadfile/:id', upload.array("files", 5), async (req, res) => {
         const filesUrl = [];
         const filesNameInMongo = [];
 
-        if (req.files) {
+        // Ensure files are uploaded and present in the request
+        if (req.files && Array.isArray(req.files)) {
             for (const file of req.files) {
-                const filePath = path.join(__dirname, 'upload', file.filename); // Corrected path handling
+                // Create the file path for the local file
+                const filePath = path.join(__dirname, 'upload', file.filename);
 
                 // Upload the file to Firebase Storage
                 const [uploadedFile] = await bucket.upload(filePath, {
-                    destination: `uploads/${file.filename}`, // Upload to 'uploads/' directory
+                    destination: `uploads/${file.filename}`, // Path in Firebase Storage
                     metadata: { contentType: file.mimetype },
                 });
 
@@ -77,6 +79,8 @@ app.post('/uploadfile/:id', upload.array("files", 5), async (req, res) => {
                 filesUrl.push(publicUrl);
                 filesNameInMongo.push(file.originalname);
             }
+        } else {
+            return res.status(400).json({ message: 'No files were uploaded.' });
         }
 
         // Update the TP document in MongoDB with the filenames
@@ -86,6 +90,7 @@ app.post('/uploadfile/:id', upload.array("files", 5), async (req, res) => {
 
         res.json({ TP, filesUrl });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: error.message });
     }
 });
