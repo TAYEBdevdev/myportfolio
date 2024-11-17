@@ -2,7 +2,7 @@ let TP = [];
 
 // Function to get all TP data
 const getTP = () => {
-  axios.get('http://localhost:3000/getallTP')
+  axios.get('https://myportfolio-yw6m.onrender.com/getallTP')
     .then((res) => {
       TP = res.data.TP;
       console.log(TP);
@@ -35,7 +35,7 @@ const displayTP = () => {
 
     // Set the download action for the button
     downloadButton.addEventListener('click', () => {
-      axios.get(`http://localhost:3000/downloadfile/67365d78657f5769a6725a8d`, { responseType: 'blob' })
+      axios.get(`https://myportfolio-yw6m.onrender.com/downloadfile/67365d78657f5769a6725a8d`, { responseType: 'blob' })
         .then(res => {
           // Create a blob from the response data
           const blob = new Blob([res.data], { type: res.headers['content-type'] });
